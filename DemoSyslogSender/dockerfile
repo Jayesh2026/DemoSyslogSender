@@ -1,0 +1,10 @@
+FROM eclipse-temurin:21-jdk-alpine
+
+WORKDIR /app
+
+COPY build/libs/DemoSyslogSender-0.0.1-SNAPSHOT.jar demoSyslog.jar
+
+EXPOSE 8081
+
+ENTRYPOINT ["java", "-javaagent:/app/opentelemetry-javaagent.jar", "-jar", "demoSyslog.jar"]
+
